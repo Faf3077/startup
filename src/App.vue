@@ -2,18 +2,14 @@
   <div class="main-page">
     <div class="header">
       <div class="first-block__header container">
-        <div class="logo"><img src="./assets/images/selection.png" /></div>
+        <div class="logo"><img src="./assets/images/logo.png" /></div>
         <div class="nav">
           <router-link to="/" active-class="active">Main page</router-link>
-          <router-link to="/pay" active-class="active"><a class="pay" href="">Pay</a></router-link>
-          <router-link to="/authorization" active-class="active">Login or Signup</router-link>
+          <router-link to="/pay" active-class="active">Pay page</router-link>
+          <router-link to="/authorization" active-class="active">Log in</router-link>
         </div>
       </div>
-      <div class="second-block__header">
-
-      </div>
     </div>
-
   </div>
 
   <router-view />
@@ -39,6 +35,7 @@ body {
 
 .main-page {
   margin: 0;
+  background: #1D1D1F;
 }
 
 .container {
@@ -50,8 +47,6 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100px;
-  background: -webkit-linear-gradient(90deg, #81a9e3, #06153d);
-  background: linear-gradient(90deg, #81a9e3, #06153d);
   font-size: 16px;
 }
 
@@ -70,10 +65,12 @@ a {
 .active {
   padding: 15px 30px;
   cursor: pointer;
-  border-radius: 15px;
-  background-color: rgb(63, 63, 63);
+  border-radius: 30px;
+  background-color: #B3DD62;
+  color: #111111;
   transition: 0.3s;
   border: none;
   outline: none;
 }
+
 </style>
