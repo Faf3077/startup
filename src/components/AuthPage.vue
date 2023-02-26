@@ -1,43 +1,44 @@
 <template>
-   <div class="auth-page">
-      <div class="auth">
-         <input type="checkbox" id="chk" aria-hidden="true">
-         <div class="login">
-            <form>
-               <label for="chk" aria-hidden="true">Login</label>
-               <input id="username" name="username" required="required" placeholder="Type username or email" />
-               <input type="password" name="pswd" required="required" placeholder="Password">
-               <button>Log in</button>
-            </form>
-         </div>
-   
-         <div class="signup">
-            <form>
-               <label for="chk" aria-hidden="true">Signup</label>
-               <input id="usernamesignup" name="usernamesignup" required="required" placeholder="Type Username" />
-               <input type="email" name="email" placeholder="Email" required="">
-               <input type="password" name="pswd" placeholder="Password" required="">
-               <input id="password_confirm" name="password_confirm" required="required" placeholder="Confirm password" />
-               <button>Sign up</button>
-            </form>
-         </div>
-      </div>
-      
-   </div>
+	<div class="main-page">
+		<div class="auth-page">
+			<div class="auth">
+				<input type="checkbox" id="chk" aria-hidden="true">
+				<div class="login">
+					<form>
+						<label for="chk" aria-hidden="true">Login</label>
+						<input id="username" name="username" required="required" placeholder="Type username or email" />
+						<input type="password" name="pswd" required="required" placeholder="Password">
+						<button>Log in</button>
+					</form>
+				</div>
+				<div class="signup">
+					<form>
+						<label for="chk" aria-hidden="true">Sign up</label>
+						<input id="usernamesignup" name="usernamesignup" required="required" placeholder="Type Username" />
+						<input type="email" name="email" placeholder="Email" required="">
+						<input type="password" name="pswd" placeholder="Password" required="">
+						<input id="password_confirm" name="password_confirm" required="required"
+							placeholder="Confirm password" />
+						<button>Sign up</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
  
 <script>
 export default {
-   data() {
-      return {
+	data() {
+		return {
 
-      }
-   }
+		}
+	}
 }
 </script>
  
 <style>
-.auth-page{
+.auth-page {
 	margin: 0;
 	padding: 0;
 	display: flex;
@@ -45,9 +46,10 @@ export default {
 	align-items: center;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
-	background: linear-gradient(#0f0c29, #302b63, #24243e);
+	background: #1D1D1F;
 }
-.auth{
+
+.auth {
 	width: 350px;
 	height: 500px;
 	background: red;
@@ -56,15 +58,18 @@ export default {
 	border-radius: 10px;
 	box-shadow: 5px 20px 50px #000;
 }
-#chk{
+
+#chk {
 	display: none;
 }
-.signup{
+
+.signup {
 	position: relative;
-	width:100%;
+	width: 100%;
 	height: 100%;
 }
-label{
+
+label {
 	color: #fff;
 	font-size: 2.3em;
 	justify-content: center;
@@ -74,7 +79,8 @@ label{
 	cursor: pointer;
 	transition: .5s ease-in-out;
 }
-input{
+
+input {
 	width: 60%;
 	height: 20px;
 	background: #e0dede;
@@ -87,7 +93,7 @@ input{
 	border-radius: 5px;
 }
 
-button{
+button {
 	width: 60%;
 	height: 40px;
 	margin: 10px auto;
@@ -104,29 +110,33 @@ button{
 	transition: .2s ease-in;
 	cursor: pointer;
 }
-button:hover{
+
+button:hover {
 	background: #6d44b8;
 }
-.signup{
+
+.signup {
 	height: 460px;
 	background: #eee;
 	border-radius: 60% / 10%;
 	transform: translateY(50px);
 	transition: .8s ease-in-out;
 }
-.signup label{
+
+.signup label {
 	color: #573b8a;
 	transform: scale(.6);
 }
 
-#chk:checked ~ .signup{
+#chk:checked~.signup {
 	transform: translateY(-350px);
 }
-#chk:checked ~ .signup label{
-	transform: scale(1);	
+
+#chk:checked~.signup label {
+	transform: scale(1);
 }
-#chk:checked ~ .login label{
+
+#chk:checked~.login label {
 	transform: scale(.6);
-}
-</style>
+}</style>
  
