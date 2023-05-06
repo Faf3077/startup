@@ -1,28 +1,28 @@
 <template>
-  <div class="main-page">
-    <div class="header">
-      <div class="first-block__header container">
-        <div class="logo"><img src="./assets/images/logo.png" /></div>
-        <div class="nav">
-          <router-link to="/" active-class="active">Main page</router-link>
-          <router-link to="/pay" active-class="active">Pay page</router-link>
-          <router-link to="/authorization" active-class="active">Log in</router-link>
-        </div>
+  <div class="header">
+    <div class="first-block__header container">
+      <a href=""><img class="logo" src="./assets/images/logo.png" /></a>
+      <div class="nav">
+        <router-link to="/" active-class="active">Главная</router-link>
+        <router-link to="/pay" active-class="active">Купить курс</router-link>
+        <router-link to="/authorization" active-class="active">Войти</router-link>
       </div>
     </div>
   </div>
-
   <router-view />
 </template>
 
 
 <script>
 export default {
-   data() {
-      return {
+  data() {
+    return {
 
-      }
-   }
+    }
+  },
+  methods() {
+
+  }
 }
 </script>
 
@@ -33,7 +33,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.main-page {
+.header {
   margin: 0;
   background: #1D1D1F;
 }
@@ -73,4 +73,7 @@ a {
   outline: none;
 }
 
+.logo {
+  max-width: 200px;
+}
 </style>
