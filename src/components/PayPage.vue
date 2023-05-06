@@ -3,13 +3,10 @@
       <div class="block block-style"></div>
       <div class="block__content container">
          <div class="content__pay">
-            <h2 class="title">MAKE PAYMENTS EASY AND SIMPLIFY YOUR FINANCES</h2>
-            <h6 class="subtitle">A new way to make payments easy, reliable and secure. You can manage all your transactions
-               from your mobile phone.</h6>
+            <h2 class="title">УПРАСТИТЕ СВОИ ПЛАТЕЖИ С ПОМОЩЬЮ ЮMoney</h2>
+            <h6 class="subtitle">Новый способ сделать платежи простыми, надежными и безопасными</h6>
             <div class="payment">
-               <iframe src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=dqpdvAR8TPk.230224&" width="330"
-                  height="50" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-               <img src="../assets/images/actors.png" alt="">
+               <iframe src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=dqpdvAR8TPk.230224&" width="330" height="50" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
             </div>
             <img src="../assets/images/img.png" alt="" class="info__users">
          </div>

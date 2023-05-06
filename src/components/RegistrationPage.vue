@@ -1,29 +1,33 @@
 <template>
 	<div class="main-page">
 		<div class="block block-style"></div>
-		<div class="content-singin">
+		<div class="content-reg">
 			<form>
-				<h2>Авторизация</h2>
+            <h2>Регистрация</h2>
 				<div id="wrapper">
 					<div class="float-group">
 						<input id="email" required type="mail" />
 						<lable class="float-label">Электронная почта</lable>
-					</div>
+					 </div>
 					<div class="float-group">
 						<input id="pass" required type="password" />
 						<lable class="float-label">Пароль</lable>
-					</div>
+					 </div>
+                <div class="float-group">
+						<input id="pass" required type="password" />
+						<lable class="float-label">Подтвердите пароль</lable>
+					 </div>
 				</div>
 				<button type="submit">
 					<span>
-						Войти
+						Зарегестрироваться
 					</span>
 				</button>
-				<span class="link-to-reg">Ещё нет профиля? <router-link to="/registration">Зарегестрируйтесь</router-link></span> 
+				<span class="link-to-reg">У вас уже есть профиль? <router-link to="/authorization">Войдите</router-link></span>
 			</form>
-			<div class="decoration">
-				<h3 class="text">Узнавайте новое с технопарком РГСУ</h3>
-				<span class="text">Авотризируйтесь, чтобы начать обучение</span>
+         <div class="decoration">
+				<h3 class="text">Добро пожаловать в технопарк РГСУ</h3>
+				<span class="text">Начните обучаться новому. Просто начните!</span>
 				<img src="../assets/images/decoration-auth.png" alt="">
 			</div>
 		</div>
@@ -41,30 +45,24 @@ export default {
 		}
 	},
 	methods: {
-		login() {
+		register() {
 			const data = { username: this.username, password: this.password };
-			fetch('/authorization/login', {
+			fetch('/authorization/register', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(data)
-
 			})
 				.then(response => {
 					if (response.ok) {
-						return response.json();
+						this.$router.push('/login');
 					} else {
-						console.log(response.json())
-						throw new Error('Ошибка авторизации');
+						throw new Error('Ошибка регистрации');
 					}
-				})
-				.then(data => {
-					localStorage.setItem('token', data.token);
-					this.$router.push('/');
 				})
 				.catch(error => {
 					console.error(error);
 				});
-		}
+		},
 	}
 }
 </script>
@@ -75,7 +73,7 @@ body {
 	color: #fff;
 	font-family: 'Raleway', sans-serif;
 }
-.content-singin{
+.content-reg{
 	display: flex;
 	justify-content: center;
 	height: 90vh;
