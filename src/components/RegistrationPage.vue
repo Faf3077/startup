@@ -1,5 +1,5 @@
 <template>
-	<div class="main-page">
+	<div class="main-page bg">
 		<div class="block block-style"></div>
 		<div class="content-reg">
 			<form>
@@ -47,7 +47,7 @@ export default {
 	methods: {
 		register() {
 			const data = { username: this.username, password: this.password };
-			fetch('/authorization/register', {
+			fetch('/register', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(data)

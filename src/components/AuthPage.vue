@@ -1,17 +1,17 @@
 <template>
-	<div class="main-page">
+	<div class="main-page bg">
 		<div class="block block-style"></div>
 		<div class="content-singin">
-			<form>
+			<form @submit.prevent="login">
 				<h2>Авторизация</h2>
 				<div id="wrapper">
 					<div class="float-group">
-						<input id="email" required type="mail" />
-						<lable class="float-label">Электронная почта</lable>
+						<input id="email" v-model="Email" required type="text" />
+						<label class="float-label">Электронная почта</label>
 					</div>
 					<div class="float-group">
-						<input id="pass" required type="password" />
-						<lable class="float-label">Пароль</lable>
+						<input id="pass" v-model="Password" required type="password" autocomplete="on" />
+						<label class="float-label">Пароль</label>
 					</div>
 				</div>
 				<button type="submit">
@@ -19,11 +19,12 @@
 						Войти
 					</span>
 				</button>
-				<span class="link-to-reg">Ещё нет профиля? <router-link to="/registration">Зарегестрируйтесь</router-link></span> 
+				<span class="link-to-reg">Ещё нет профиля? <router-link
+						to="/registration">Зарегистрируйтесь</router-link></span>
 			</form>
 			<div class="decoration">
 				<h3 class="text">Узнавайте новое с технопарком РГСУ</h3>
-				<span class="text">Авотризируйтесь, чтобы начать обучение</span>
+				<span class="text">Авторизуйтесь, чтобы начать обучение</span>
 				<img src="../assets/images/decoration-auth.png" alt="">
 			</div>
 		</div>
@@ -31,40 +32,40 @@
 		<div class="block-second block-style"> </div>
 	</div>
 </template>
- 
+
 <script>
 export default {
 	data() {
 		return {
-			username: '',
-			password: ''
-		}
+			Email: '',
+			Password: '',
+			users: ""
+		};
 	},
 	methods: {
 		login() {
-			const data = { username: this.username, password: this.password };
-			fetch('/authorization/login', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(data)
-
-			})
-				.then(response => {
-					if (response.ok) {
-						return response.json();
-					} else {
-						console.log(response.json())
-						throw new Error('Ошибка авторизации');
-					}
-				})
-				.then(data => {
-					localStorage.setItem('token', data.token);
-					this.$router.push('/');
-				})
-				.catch(error => {
-					console.error(error);
-				});
+			const user = this.users.find(
+				(usr) => usr.Email === this.Email && usr.Password === this.Password
+			);
+			if (user) {
+				console.log("Успешно")
+			} else {
+				console.log("Данные не верны");
+			}
+		},
+		async auth() {
+			try {
+				const users = await fetch("http://localhost:5000/users");
+				const data = await users.json();
+				this.users = data;
+				console.log(this.users);
+			} catch (err) {
+				console.log(err);
+			}
 		}
+	},
+	mounted() {
+		this.auth()
 	}
 }
 </script>
@@ -75,23 +76,27 @@ body {
 	color: #fff;
 	font-family: 'Raleway', sans-serif;
 }
-.content-singin{
+
+.content-singin {
 	display: flex;
 	justify-content: center;
 	height: 90vh;
 	align-items: center;
 	gap: 10rem;
 }
+
 form {
 	width: 450px;
 	height: 370px;
 }
-form h2{
+
+form h2 {
 	color: #fff;
 	font-size: 25px;
 	text-align: center;
 	margin-bottom: 50px;
 }
+
 input {
 	background: #fff;
 	border: none;
@@ -161,17 +166,21 @@ button:hover {
 .link-to-reg a:hover {
 	color: aqua;
 }
-.decoration{
+
+.decoration {
 	display: flex;
 	flex-direction: column;
 }
-.decoration h3{
+
+.decoration h3 {
 	font-size: 30px;
 }
-.decoration span{
+
+.decoration span {
 	font-size: 16px;
 }
-.text{
+
+.text {
 	color: #fff;
 }
 </style>
