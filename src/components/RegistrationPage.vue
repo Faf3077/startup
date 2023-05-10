@@ -1,6 +1,5 @@
 <template>
-	<div class="main-page bg">
-		<div class="block block-style"></div>
+	<div class="main-page">
 		<div class="content-reg">
 			<form>
             <h2>Регистрация</h2>
@@ -31,8 +30,6 @@
 				<img src="../assets/images/decoration-auth.png" alt="">
 			</div>
 		</div>
-
-		<div class="block-second block-style"> </div>
 	</div>
 </template>
  
@@ -72,6 +69,12 @@ body {
 	background: #6ED0F6;
 	color: #fff;
 	font-family: 'Raleway', sans-serif;
+}
+.main-page{
+	background-image: url(../assets/images/bcg.png) ;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center center;
 }
 .content-reg{
 	display: flex;
