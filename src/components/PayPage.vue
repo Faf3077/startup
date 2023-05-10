@@ -1,78 +1,77 @@
 <template>
    <div class="pay-page">
-      <div class="block block-style"></div>
-      <div class="block__content container">
-         <div class="content__pay">
-            <h2 class="title">УПРАСТИТЕ СВОИ ПЛАТЕЖИ С ПОМОЩЬЮ ЮMoney</h2>
-            <h6 class="subtitle">Новый способ сделать платежи простыми, надежными и безопасными</h6>
-            <div class="payment">
-               <iframe src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=dqpdvAR8TPk.230224&" width="330" height="50" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-            </div>
-            <img src="../assets/images/img.png" alt="" class="info__users">
+     <div class="block__content container">
+       <div class="content__pay">
+         <h2 class="title">УПРОСТИТЕ СВОИ ПЛАТЕЖИ С ПОМОЩЬЮ ЮMoney</h2>
+         <h6 class="subtitle">Новый способ сделать платежи простыми, надежными и безопасными</h6>
+         <div class="payment">
+           <iframe ref="paymentIframe"
+             src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=dqpdvAR8TPk.230224&"
+             width="330"
+             height="50"
+             frameborder="0"
+             allowtransparency="true"
+             scrolling="no"
+             @load="onIframeLoad"
+           ></iframe>
          </div>
-         <div class="block__ellipse-phone">
-            <img src="../assets/images/ellipse.png" alt="" class="ellipse">
-            <img src="../assets/images/phone.png" alt="" class="phone">
-         </div>
-      </div>
-      <div class="block-second block-style"> </div>​
+         <img src="../assets/images/img.png" alt="" class="info__users">
+       </div>
+       <img src="../assets/images/phone.png" alt="" class="phone">
+     </div>
    </div>
-</template>
+ </template>
  
-<script>
-export default {
+ <script>
+ export default {
    data() {
-      return {
-
-      }
-   }
-}
-</script>
+     return {};
+   },
+ 
+   methods: {
+     onIframeLoad() {
+       this.$refs.paymentIframe.contentWindow.postMessage("Оплата прошла", "*");
+     },
+   },
+ 
+   mounted() {
+     window.addEventListener("message", (event) => {
+       console.log(event.data);
+     });
+   },
+ };
+ </script>
  
 <style>
-h2, h6 {
+h2,
+h6 {
    margin: 0;
    padding: 0;
 }
 
 .pay-page {
-   background: #1D1D1F;
-   height: 90vh;
-   width: 100%;
-}
-
-.block {
-   position: absolute;
-   left: -200px;
-   top: -100px;
-   filter: blur(150px);
-   transform: matrix(1, 0, 0, 1, 0, 0);
-}
-
-.block-second {
-   position: absolute;
-   right: 0;
-   bottom: 0;
-   filter: blur(100px);
-   transform: matrix(1, 0, 0, 1, 0, 0);
-}
-
-.block-style {
-   width: 500px;
-   height: 500px;
-   background: radial-gradient(50% 50% at 50% 50%, rgba(175, 109, 234, 0.58) 0%, rgba(175, 109, 234, 0) 100%);
+   background-image: url(../assets/images/bcg.png);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center center;
+   height: 80vh;
+   padding-top: 100px;
 }
 
 .block__content {
    display: flex;
-   justify-content: space-between;
+   justify-content: space-around;
    align-items: center;
-   padding: 100px 0 0 150px;
 }
 
 .content__pay {
    max-width: 660px;
 }
+
+img {
+   pointer-events: none;
+}
+
 
 .title {
    font-weight: bold;
@@ -95,17 +94,5 @@ h2, h6 {
    display: flex;
    align-items: center;
    margin-bottom: 50px;
-}
-
-img.phone {
-   position: absolute;
-   right: 300px;
-   top: 190px;
-}
-
-.ellipse {
-   position: absolute;
-   right: 250px;
-   top: 200px;
 }
 </style>

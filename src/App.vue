@@ -5,7 +5,10 @@
       <div class="nav">
         <router-link to="/" active-class="active">Главная</router-link>
         <router-link to="/pay" active-class="active">Купить курс</router-link>
-        <router-link to="/authorization" active-class="active">Войти</router-link>
+        <div v-if="isAuthenticated">
+          <router-link to="/profile" active-class="active">Профиль</router-link>
+        </div>
+        <router-link to="/authorization" v-else active-class="active">Войти</router-link>
       </div>
     </div>
   </div>
@@ -13,17 +16,26 @@
 </template>
 
 
+
 <script>
 export default {
   data() {
     return {
-
+      isAuthenticated: this.$store.state.auth,
     }
   },
-  methods() {
-
+  mounted() {
+    this.$watch(
+      () => this.$store.state.auth,
+      (newVal, oldVal) => {
+        if (newVal !== oldVal) {
+          this.isAuthenticated = newVal;
+          this.username = this.$store.state.username;
+        }
+      }
+    );
   }
-}
+};
 </script>
 
 
@@ -55,6 +67,10 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+img {
+  pointer-events: none;
 }
 
 a {

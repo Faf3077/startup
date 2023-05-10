@@ -3,6 +3,7 @@ import ContentPage from '../components/ContentPage.vue'
 import PayPage from '../components/PayPage.vue'
 import AuthPage from '../components/AuthPage.vue'
 import RegistrationPage from '../components/RegistrationPage.vue'
+import ProfilePage from '../components/ProfilePage.vue'
 
 const routes = [
   {
@@ -20,7 +21,12 @@ const routes = [
   {
     path: '/registration',
     component: RegistrationPage
-  }
+  },
+  {
+    path: '/profile',
+    component: ProfilePage
+  },
+
 ]
 
 const router = createRouter({

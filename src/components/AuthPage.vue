@@ -1,6 +1,5 @@
 <template>
-	<div class="main-page bg">
-		<div class="block block-style"></div>
+	<div class="main-page">
 		<div class="content-singin">
 			<form @submit.prevent="login">
 				<h2>Авторизация</h2>
@@ -28,18 +27,17 @@
 				<img src="../assets/images/decoration-auth.png" alt="">
 			</div>
 		</div>
-
-		<div class="block-second block-style"> </div>
 	</div>
 </template>
 
 <script>
+import router from '../router/index.js';
 export default {
 	data() {
 		return {
 			Email: '',
 			Password: '',
-			users: ""
+			users: "",
 		};
 	},
 	methods: {
@@ -48,9 +46,13 @@ export default {
 				(usr) => usr.Email === this.Email && usr.Password === this.Password
 			);
 			if (user) {
-				console.log("Успешно")
+				this.$store.state.auth = true;
+				router.replace('/profile')
+				this.$store.state.username = this.Email.split('@')[0];
+				console.log(this.$store.state.username)
+				console.log(this.$store.state.auth)
 			} else {
-				console.log("Данные не верны");
+				alert("Данные не верны");
 			}
 		},
 		async auth() {
@@ -76,7 +78,12 @@ body {
 	color: #fff;
 	font-family: 'Raleway', sans-serif;
 }
-
+.main-page{
+	background-image: url(../assets/images/bcg.png) ;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center center;
+}
 .content-singin {
 	display: flex;
 	justify-content: center;
