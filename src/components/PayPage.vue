@@ -67,12 +67,13 @@ export default {
     // },
 
     async makePayment() {
-      const apiKey = 'C45A0B898BE7FC48E88A38658A82F12AFD86CF5309A38D45DDE8FBD75B6F24E2';
+      const apiKey = 'B85BF25B3FB83AADE0D6ACBB0A13B72EDC819E6A47E9D6441BE6DA4E54AAE529';
 
       try {
         // Отправка запроса request-payment
         const response = await axios.post(
-          'https://yoomoney.ru/api/request-payment',
+          '/api/request-payment',
+          requestData,
           {
             pattern_id: 'p2p',
             to: 'получатель',
@@ -95,7 +96,7 @@ export default {
         console.error('Ошибка при выполнении операции:', error);
       }
     },
-  
+
 
   }
 };
@@ -174,4 +175,5 @@ img {
   display: flex;
   align-items: center;
   margin-bottom: 50px;
-}</style>
+}
+</style>
