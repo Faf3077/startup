@@ -67,13 +67,13 @@ export default {
     // },
 
     async makePayment() {
-      const apiKey = 'B85BF25B3FB83AADE0D6ACBB0A13B72EDC819E6A47E9D6441BE6DA4E54AAE529';
+      const apiKey = '9078D8F45DCB761A69153BB1E347C75AAE394D5E78B5AC4FE11DDB4954FD65D6';
 
       try {
         const requestData = {
           pattern_id: 'p2p',
-          to: 'получатель',
-          amount: 'сумма',
+          to: 'санечка',
+          amount: '2345',
           message: 'комментарий',
           comment: 'комментарий',
         };
