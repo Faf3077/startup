@@ -70,17 +70,18 @@ export default {
       const apiKey = 'B85BF25B3FB83AADE0D6ACBB0A13B72EDC819E6A47E9D6441BE6DA4E54AAE529';
 
       try {
+        const requestData = {
+          pattern_id: 'p2p',
+          to: 'получатель',
+          amount: 'сумма',
+          message: 'комментарий',
+          comment: 'комментарий',
+        };
+
         // Отправка запроса request-payment
         const response = await axios.post(
-          '/api/request-payment',
+          'https://yoomoney.ru/api/request-payment',
           requestData,
-          {
-            pattern_id: 'p2p',
-            to: 'получатель',
-            amount: 'сумма',
-            message: 'комментарий',
-            comment: 'комментарий',
-          },
           {
             headers: {
               Authorization: `Bearer ${apiKey}`,
