@@ -4,7 +4,7 @@
       <div class="content__pay">
         <h2 class="title">УПРОСТИТЕ СВОИ ПЛАТЕЖИ С ПОМОЩЬЮ ЮMoney</h2>
         <h6 class="subtitle">Новый способ сделать платежи простыми, надежными и безопасными</h6>
-        <button @click="makePayment">Выполнить API-запрос</button>
+        <!-- <button @click="makePayment">Выполнить API-запрос</button> -->
         <!-- <div class="wrapper"> -->
 
         <!-- <button class="button-overlay"></button> -->
@@ -23,7 +23,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      isPayment: false
+      // isPayment: false
     };
   },
   mounted() {
@@ -36,13 +36,13 @@ export default {
     // window.addEventListener('message', (event) => {
     //   console.log(event.data);
     // });
-    console.log(this.isPayment, "!!!")
+    // console.log(this.isPayment, "!!!")
 
 
 
   },
   updated() {
-    console.log(this.isPayment, "курсы доступны?")
+    
   },
   methods: {
     // getPayment() {
@@ -66,37 +66,37 @@ export default {
     //     });
     // },
 
-    async makePayment() {
-      const apiKey = 'B85BF25B3FB83AADE0D6ACBB0A13B72EDC819E6A47E9D6441BE6DA4E54AAE529';
+    // async makePayment() {
+    //   const apiKey = 'B85BF25B3FB83AADE0D6ACBB0A13B72EDC819E6A47E9D6441BE6DA4E54AAE529';
 
-      try {
-        const requestData = {
-          pattern_id: 'p2p',
-          to: 'санечка',
-          amount: '2345',
-          message: 'комментарий',
-          comment: 'комментарий',
-        };
+    //   try {
+    //     const requestData = {
+    //       pattern_id: 'p2p',
+    //       to: 'санечка',
+    //       amount: '2345',
+    //       message: 'комментарий',
+    //       comment: 'комментарий',
+    //     };
 
-        // Отправка запроса request-payment
-        const response = await axios.post(
-          'https://yoomoney.ru/api/request-payment',
-          requestData,
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-          }
-        );
+    //     // Отправка запроса request-payment
+    //     const response = await axios.post(
+    //       'https://yoomoney.ru/api/request-payment',
+    //       requestData,
+    //       {
+    //         headers: {
+    //           Authorization: `Bearer ${apiKey}`,
+    //           'Content-Type': 'application/x-www-form-urlencoded',
+    //         },
+    //       }
+    //     );
 
-        // Получение статуса выполнения операции
-        const status = response.data.status;
-        console.log('Статус операции:', status);
-      } catch (error) {
-        console.error('Ошибка при выполнении операции:', error);
-      }
-    },
+    //     // Получение статуса выполнения операции
+    //     const status = response.data.status;
+    //     console.log('Статус операции:', status);
+    //   } catch (error) {
+    //     console.error('Ошибка при выполнении операции:', error);
+    //   }
+    // },
 
 
   }
