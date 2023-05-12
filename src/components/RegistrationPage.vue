@@ -1,30 +1,32 @@
 <template>
 	<div class="main-page">
 		<div class="content-reg">
-			<form>
-            <h2>Регистрация</h2>
+			<form @submit.prevent="register">
+				<h2>Регистрация</h2>
 				<div id="wrapper">
 					<div class="float-group">
-						<input id="email" required type="mail" />
+						<input name="email" v-model="Email" required type="mail" />
 						<lable class="float-label">Электронная почта</lable>
-					 </div>
+					</div>
 					<div class="float-group">
-						<input id="pass" required type="password" />
+						<input name="password" v-model="Password" required type="password" />
 						<lable class="float-label">Пароль</lable>
-					 </div>
-                <div class="float-group">
-						<input id="pass" required type="password" />
+					</div>
+					<div class="float-group">
+						<input name="confirmPassword" v-model="confirmPassword" required type="password" />
 						<lable class="float-label">Подтвердите пароль</lable>
-					 </div>
+					</div>
 				</div>
 				<button type="submit">
 					<span>
 						Зарегестрироваться
 					</span>
 				</button>
-				<span class="link-to-reg">У вас уже есть профиль? <router-link to="/authorization">Войдите</router-link></span>
+				<span class="link-to-reg">
+					У вас уже есть профиль? <router-link to="/authorization">Войдите</router-link>
+				</span>
 			</form>
-         <div class="decoration">
+			<div class="decoration">
 				<h3 class="text">Добро пожаловать в технопарк РГСУ</h3>
 				<span class="text">Начните обучаться новому. Просто начните!</span>
 				<img src="../assets/images/decoration-auth.png" alt="">
@@ -34,32 +36,25 @@
 </template>
  
 <script>
+import axios from 'axios';
 export default {
 	data() {
 		return {
-			username: '',
-			password: ''
+			Email: '',
+			Password: '',
+			confirmPassword: '',
 		}
 	},
 	methods: {
+
 		register() {
-			const data = { username: this.username, password: this.password };
-			fetch('/register', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(data)
-			})
-				.then(response => {
-					if (response.ok) {
-						this.$router.push('/login');
-					} else {
-						throw new Error('Ошибка регистрации');
-					}
-				})
-				.catch(error => {
-					console.error(error);
-				});
-		},
+			if (this.Password !== this.confirmPassword) {
+				console.error('Пароли не совпадают');
+			}
+			else {
+				
+			}
+		}
 	}
 }
 </script>
@@ -70,29 +65,34 @@ body {
 	color: #fff;
 	font-family: 'Raleway', sans-serif;
 }
-.main-page{
-	background-image: url(../assets/images/bcg.png) ;
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position: center center;
+
+.main-page {
+	background-image: url(../assets/images/bcg.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
 }
-.content-reg{
+
+.content-reg {
 	display: flex;
 	justify-content: center;
 	height: 90vh;
 	align-items: center;
 	gap: 10rem;
 }
+
 form {
 	width: 450px;
 	height: 370px;
 }
-form h2{
+
+form h2 {
 	color: #fff;
 	font-size: 25px;
 	text-align: center;
 	margin-bottom: 50px;
 }
+
 input {
 	background: #fff;
 	border: none;
@@ -162,17 +162,21 @@ button:hover {
 .link-to-reg a:hover {
 	color: aqua;
 }
-.decoration{
+
+.decoration {
 	display: flex;
 	flex-direction: column;
 }
-.decoration h3{
+
+.decoration h3 {
 	font-size: 30px;
 }
-.decoration span{
+
+.decoration span {
 	font-size: 16px;
 }
-.text{
+
+.text {
 	color: #fff;
 }
 </style>
