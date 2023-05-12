@@ -1,8 +1,8 @@
 {
    "rewrites": [
      {
-       "source": "/api/:path*",
-       "destination": "http://localhost:YOUR_BACKEND_PORT/api/:path*"
+      "source": "/api/ym-payment/:path*",
+       "destination": "http://localhost:8080/api/:path*"
      }
    ]
  }
