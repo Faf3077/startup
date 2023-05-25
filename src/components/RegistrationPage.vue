@@ -1,7 +1,7 @@
 <template>
 	<div class="main-page">
 		<div class="content-reg">
-			<form @submit.prevent="register">
+			<form @submit.prevent="addUser">
 				<h2>Регистрация</h2>
 				<div id="wrapper">
 					<div class="float-group">
@@ -34,9 +34,10 @@
 		</div>
 	</div>
 </template>
- 
+	
 <script>
 import axios from 'axios';
+import router from '../router/index.js';
 export default {
 	data() {
 		return {
@@ -46,13 +47,21 @@ export default {
 		}
 	},
 	methods: {
-
-		register() {
+		async addUser() {
 			if (this.Password !== this.confirmPassword) {
 				console.error('Пароли не совпадают');
 			}
 			else {
-				
+				try {
+					await axios.post("http://localhost:5000/users", {
+						Email: this.Email,
+						Password: this.Password,
+						Status: 0
+					}),
+						router.replace('/authorization')
+				} catch (error) {
+					console.log(error)
+				}
 			}
 		}
 	}
