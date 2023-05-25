@@ -37,24 +37,24 @@
          </div>
       </div>
       <div class="footer bg">
-         <div class="footer-elem">
-            <div class="wrapper">
+         <div class="footer__elem">
+            <div class="wrapper__block">
                <a href=""><img class="logo" src="../assets/images/logo.png" alt=""></a>
             </div>
-            <div class="wrapper contacts">
+            <div class="wrapper__block contacts">
                <a href="https://t.me/DTRSSU"><img src="../assets/images/telegram.png" alt=""></a>
                <a href="https://www.youtube.com/channel/UCfe4q1D3yk75-XfGi5KrUJA"><img src="../assets/images/youtube.png"
                      alt=""></a>
                <a href="https://vk.com/tehnopark_rgsu"><img src="../assets/images/vk.png" alt=""></a>
             </div>
-            <div class="wrapper">
+            <div class="wrapper__block">
                <h3>Технопарк</h3>
                <div class="link">
                   <a href="https://technopark-rgsu.ru/novosti/">Новости</a>
                   <a href="https://technopark-rgsu.ru/kontakty/">Контакты</a>
                </div>
             </div>
-            <div class="wrapper">
+            <div class="wrapper__block">
                <h3>Документы</h3>
                <div class="link">
                   <a href="https://technopark-rgsu.ru/documents/1.pdf">Публичная оферта</a>
@@ -215,8 +215,7 @@ p {
    text-align: center;
 }
 
-
-.footer-elem {
+.footer__elem {
    display: flex;
    align-items: center;
    justify-content: space-around;
@@ -230,7 +229,7 @@ p {
    gap: 20px;
 }
 
-.wrapper h3 {
+.wrapper__block h3 {
    color: #666363;
 }
 
@@ -242,4 +241,34 @@ p {
 
 .link:hover {
    text-decoration: underline;
-}</style>
+}
+
+@media screen and (max-width: 800px) {
+   .video-bg__content h1 {
+      font-size: 24px;
+      margin-bottom: 100px;
+   }
+
+   .video-bg__content button {
+      font-size: 16px;
+      padding: 8px 30px;
+   }
+
+   .second-block p {
+      font-size: 20px;
+   }
+
+   .third-block h3 {
+      font-size: 24px;
+   }
+
+   .block-content p {
+      font-size: 20px;
+   }
+
+   .block-content button {
+      font-size: 16px;
+      padding: 10px 30px;
+   }
+}
+</style>
