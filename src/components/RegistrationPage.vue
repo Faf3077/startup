@@ -49,7 +49,7 @@ export default {
 	methods: {
 		async addUser() {
 			if (this.Password !== this.confirmPassword) {
-				console.error('Пароли не совпадают');
+				alert('Пароли не совпадают');
 			}
 			else {
 				try {

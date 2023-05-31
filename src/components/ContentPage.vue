@@ -5,10 +5,10 @@
          <div class="effects"></div>
          <div class="video-bg__content">
             <h1>Учебный центр РГСУ предоставит вам курсы по программированию</h1>
-            <button class="more">Узнать больше</button>
+            <button class="more" @click="scrollToNextBlock">Узнать больше</button>
          </div>
       </div>
-      <div class="second-block bg">
+      <div class="second-block bg" id="secondBlock">
          <h3>Технопарк РГСУ</h3>
          <p>Технопарки РГСУ - это площадки для ранней профориентации школьников в области перспективных
             инженерных и информационных технологий. Лаборатории технопарка доступны для реализации IT-проектов
@@ -32,7 +32,7 @@
                   - Второй этап (введение в JavaScript и ECMAScript2023)<br><br>
 
                   - Третий этап, заключительный (введение в фремворк VUE 2 и 3 версии)</p>
-               <div class="style-btn"><button class="buy">Приобрести курс</button></div>
+               <div class="style-btn"><button @click="routReplace" class="buy">Приобрести курс</button></div>
             </div>
          </div>
       </div>
@@ -67,10 +67,20 @@
 </template>
 
 <script>
+import router from '../router/index.js';
 export default {
    data() {
       return {
 
+      }
+   },
+   methods: {
+      scrollToNextBlock() {
+         const secondBlock = document.getElementById("secondBlock");
+         secondBlock.scrollIntoView({ behavior: "smooth" });
+      },
+      routReplace(){
+         router.replace('/pay')
       }
    }
 }
